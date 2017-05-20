@@ -60,6 +60,7 @@
     <Compile Include="Scenes\AI\MapObjects\ConsumerObject.cs" />
     <Compile Include="Scenes\AI\MapObjects\ResidentialObject.cs" />
     <Compile Include="Scenes\AI\MapObjects\RoadObject.cs" />
+    <Compile Include="Scenes\AI\PersonEntity.cs" />
     <Compile Include="Scenes\AI\Tile.cs" />
     <Compile Include="Scenes\AI\TileMap.cs" />
     <Compile Include="Scenes\AI\CustomMapComponent.cs" />

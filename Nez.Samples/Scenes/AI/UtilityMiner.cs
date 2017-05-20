@@ -1,5 +1,8 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Nez.AI.UtilityAI;
+using Nez.Sprites;
 
 
 namespace Nez.Samples
@@ -19,7 +22,11 @@ namespace Nez.Samples
 
 		public override void onAddedToEntity()
 		{
-			enabled = false;
+
+            var texture = entity.scene.content.Load<Texture2D>(Content.Gangsters.person);
+            entity.addComponent(new Sprite(texture));
+
+            enabled = true;
 			var reasoner = new FirstScoreReasoner<UtilityMiner>();
 
 			// sleep is most important
@@ -83,7 +90,8 @@ namespace Nez.Samples
 			reasoner.defaultConsideration.action = new ActionExecutor<UtilityMiner>( c => c.goToLocation( MinerState.Location.Mine ) );
 
 			_ai = new UtilityAI<UtilityMiner>( this, reasoner );
-		}
+            
+        }
 
 
 		public void update()
@@ -96,7 +104,11 @@ namespace Nez.Samples
 		{
 			Debug.log( "getting some sleep. current fatigue {0}", minerState.fatigue );
 			minerState.fatigue--;
-		}
+
+            entity.tweenPositionTo(new Vector2(0, 0), 4)
+                      .setRecycleTween(false)
+                      .start();
+        }
 
 
 		public void drink()

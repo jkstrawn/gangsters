@@ -1,5 +1,7 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nez.Sprites;
 
 
 namespace Nez.Samples
@@ -32,6 +34,9 @@ namespace Nez.Samples
             var tiledEntity = createEntity("tiled-map-entity");
             var mapTex = content.Load<Texture2D>(Content.Gangsters.map);
             var tiledMapComponent = tiledEntity.addComponent(new CustomMapComponent(mapTex));
+
+            var playerEntity = createEntity("player", new Vector2(100, 100));
+            playerEntity.addComponent(new UtilityMiner());
         }
 	}
 }
