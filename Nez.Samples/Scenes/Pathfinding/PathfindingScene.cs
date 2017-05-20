@@ -18,13 +18,13 @@ namespace Nez.Samples
 			Screen.setSize( 1280, 736 );
 
 			// load a TiledMap and a TiledMapComponent to display it
-			var tiledEntity = createEntity( "tiled-map" );
-			var tiledmap = content.Load<TiledMap>( Content.DestructableMap.destructablemap );
-			tiledEntity.addComponent( new TiledMapComponent( tiledmap ) );
+			//var tiledEntity = createEntity( "tiled-map" );
+			//var tiledmap = content.Load<TiledMap>( Content.DestructableMap.destructablemap );
+			//tiledEntity.addComponent( new TiledMapComponent( tiledmap ) );
 
-			// add a Pathfinder to handle pathfinding and debug display of the paths
-			createEntity( "pathfinder" )
-				.addComponent( new Pathfinder( tiledmap ) );
+			//// add a Pathfinder to handle pathfinding and debug display of the paths
+			//createEntity( "pathfinder" )
+			//	.addComponent( new Pathfinder( tiledmap ) );
 		}
 	}
 }

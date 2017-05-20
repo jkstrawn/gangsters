@@ -30,7 +30,7 @@ namespace Nez.Samples
 
 
             var tiledEntity = createEntity("tiled-map-entity");
-            var mapTex = content.Load<Texture2D>(Content.NinjaAdventure.Map.map);
+            var mapTex = content.Load<Texture2D>(Content.Gangsters.map);
             var tiledMapComponent = tiledEntity.addComponent(new CustomMapComponent(mapTex));
         }
 	}
