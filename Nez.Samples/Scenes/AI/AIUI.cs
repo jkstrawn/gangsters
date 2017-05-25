@@ -9,11 +9,8 @@ namespace Nez.Samples
 	public class AIUI : UICanvas
 	{
 		public override RectangleF bounds { get { return new RectangleF( 0, 0, 200, 200 ); } }
-
-		BehaviorTreeMiner _miner;
+        
 		UtilityMiner _utilityMiner;
-		GOAPMiner _goapMiner;
-
 
 		public override void onAddedToEntity()
 		{
@@ -51,9 +48,7 @@ namespace Nez.Samples
 				 .onClicked += onClickStopAllAi;
 
 			// fetch our different AI Components
-			_miner = entity.scene.findComponentOfType<BehaviorTreeMiner>();
 			_utilityMiner = entity.scene.findComponentOfType<UtilityMiner>();
-			_goapMiner = entity.scene.findComponentOfType<GOAPMiner>();
 		}
 
 
@@ -63,8 +58,6 @@ namespace Nez.Samples
 		{
 			Debug.log( "------ Enabled Behavior Tree LowerPriority Abort ------" );
 			disableAllAI();
-			_miner.buildLowerPriorityAbortTree();
-			_miner.setEnabled( true );
 		}
 
 
@@ -72,8 +65,6 @@ namespace Nez.Samples
 		{
 			Debug.log( "------ Enabled Behavior Tree Self Abort ------" );
 			disableAllAI();
-			_miner.buildSelfAbortTree();
-			_miner.setEnabled( true );
 		}
 
 
@@ -89,7 +80,6 @@ namespace Nez.Samples
 		{
 			Debug.log( "------ Enabled GOAP ------" );
 			disableAllAI();
-			_goapMiner.setEnabled( true );
 		}
 
 
@@ -101,9 +91,7 @@ namespace Nez.Samples
 
 		void disableAllAI()
 		{
-			_miner.setEnabled( false );
-			_utilityMiner.setEnabled( false );
-			_goapMiner.setEnabled( false );			
+			_utilityMiner.setEnabled( false );		
 		}
 
 		#endregion

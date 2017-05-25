@@ -107,7 +107,7 @@ namespace Nez.Samples
             }
             else
             {
-                var obj = new ConsumerObject(x, y, size);
+                var obj = new BusinessObject(x, y, size);
                 GameObjects.Add(obj);
             }
         }

@@ -13,22 +13,21 @@ namespace Nez.Samples
 		{
 			addRenderer( new DefaultRenderer() );
 
-			//createEntity( "ai-ui" )
-			//	.addComponent<AIUI>();
 
-			//createEntity( "miner" )
-			//	.addComponent<BehaviorTreeMiner>();
+            //createEntity( "miner" )
+            //	.addComponent<BehaviorTreeMiner>();
 
-			//createEntity( "utility-miner" )
-			//	.addComponent<UtilityMiner>();
+            //createEntity( "utility-miner" )
+            //	.addComponent<UtilityMiner>();
 
-			//createEntity( "goap-miner" )
-			//	.addComponent<GOAPMiner>();
+            //createEntity( "goap-miner" )
+            //	.addComponent<GOAPMiner>();
 
+		    var width = 768;
+		    var height = 468;
 
-
-            setDesignResolution(768, 432, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
-            Screen.setSize(768 * 2, 448 * 2);
+            setDesignResolution(width, height, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
+            Screen.setSize(width * 2, height * 2);
 
 
             var tiledEntity = createEntity("tiled-map-entity");
@@ -37,6 +36,12 @@ namespace Nez.Samples
 
             var playerEntity = createEntity("player", new Vector2(100, 100));
             playerEntity.addComponent(new UtilityMiner());
+
+            createEntity("ai-ui")
+                .addComponent<AIUI>();
+
+            camera.position = new Vector2(width / 2, height / 2 - 36);
+            clearColor = Color.Black;
         }
 	}
 }
