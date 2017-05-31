@@ -9,8 +9,16 @@ namespace Nez.Samples
 	public class AIUI : UICanvas
 	{
 		public override RectangleF bounds { get { return new RectangleF( 0, 0, 200, 200 ); } }
+        public int ScreenWidth { get; set; }
+        public int ScreenHeight { get; set; }
         
 		UtilityMiner _utilityMiner;
+
+	    public AIUI(int width, int height)
+	    {
+	        ScreenWidth = width;
+	        ScreenHeight = height;
+	    }
 
 		public override void onAddedToEntity()
 		{
@@ -19,7 +27,7 @@ namespace Nez.Samples
 			// setup a Skin and a Table for our UI
 			var skin = Skin.createDefaultSkin();
 			var table = stage.addElement( new Table() );
-			table.defaults().setPadTop( 10 ).setMinWidth( 170 ).setMinHeight( 30 );
+			table.defaults().setMinWidth( 170 ).setMinHeight( 30 );
 			table.setFillParent( true ).center();
 
 			// add a button for each of the actions/AI types we need
@@ -27,25 +35,16 @@ namespace Nez.Samples
 				 .getElement<TextButton>()
 				 .onClicked += onClickBtLowerPriority;
 			table.row();
+		    table.setPosition(0, ScreenHeight / 2 * -1 - 17);
+			//table.row().setPadTop( 40 );
 
-			table.add( new TextButton( "BT: Self Abort Tree", skin ) )
-				 .getElement<TextButton>()
-				 .onClicked += onClickBtSelfAbort;
-			table.row();
+            var dialogue = stage.addElement(new Dialog("Testing", skin));
+		    dialogue.addText("This is some text being shown");
+            dialogue.setVisible(false);
 
-			table.add( new TextButton( "Utility AI", skin ) )
-				 .getElement<TextButton>()
-				 .onClicked += onClickUtilityAI;
-			table.row();
-
-			table.add( new TextButton( "GOAP", skin ) )
-				 .getElement<TextButton>()
-				 .onClicked += onClickGoap;
-			table.row().setPadTop( 40 );
-
-			table.add( new TextButton( "Stop All Running AI", skin ) )
-				 .getElement<TextButton>()
-				 .onClicked += onClickStopAllAi;
+		    var text = stage.addElement(new TextField("Money: $400", skin));
+		    //text.setAlignment(Align.topLeft);
+            
 
 			// fetch our different AI Components
 			_utilityMiner = entity.scene.findComponentOfType<UtilityMiner>();
